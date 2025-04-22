@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/x-icon" href="./src/assets/icons/logo.svg">
+    <title>Трейд-Ин - обменяй старое устройство на новое</title>
+</head>
+<body>
+<div class="container" id="app">
+
+    <div class="modal-wrapper none" data-modal="default">
+        <div class="modal">
+            <div class="modal__content">
+                <img class="modal__pic" src="./src/assets/icons/warning.svg" alt="modal logo">
+                <span class="modal__label">optional Label</span>
+                <h2 class="modal__title">Could not save settings</h2>
+                <p class="modal__subtitle">Could not connect to server to save your settings. Please try again later.</p>
+                <button class="modal__button button button-full">
+                    <span class="button__title">Хорошо</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-wrapper" data-modal="add-prompt">
+        <div class="modal modal--medium">
+            <header class="modal__header">
+                <h2 class="modal__title m-0">Введите свой username</h2>
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.7782 9.63602L22.3639 8.2218L16 14.5858L9.63602 8.2218L8.2218 9.63602L14.5858 16L8.2218 22.3639L9.63602 23.7782L16 17.4142L22.3639 23.7782L23.7782 22.3639L17.4142 16L23.7782 9.63602Z" fill="black"/>
+                </svg>
+            </header>
+            <div class="modal__content">
+                <div class="custom-input w-full">
+                    <input class="custom-input__text-field" id="username-telegram" type="text" name="username-telegram"
+                           placeholder="@username" required>
+                </div>
+                <button class="modal__button button button-full">
+                    <span class="button__title">Продолжить</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="loader loader-wrapper">
+        <div class="loader-container-wrap">
+            <div class="loader-container">
+                <div class="loader-box loader-box--main"></div>
+                <div class="loader-box loader-box--additional"></div>
+            </div>
+        </div>
+    </div>
+
+    <form class="trade-in-form none" id="tradeIn" name="submit-to-google-sheet">
+
+        <section class="card card--1 visible">
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Во сколько оцените мой смартфон?</h1>
+                <p class="card__header-title card__header-title--2">Во сколько оцените мой смартфон?</p>
+                <p class="card__header-title card__header-title--3">Во сколько оцените мой смартфон?</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Всего 30 секунд — и вы уже знаете, сколько стоит ваш смартфон! Ответьте на 4 простых вопроса, и
+                    получайте точную цену немедленно! Это проще, чем вы могли себе представить!
+                </p>
+            </div>
+            <footer class="card__footer">
+                <div class="card__footer-buttons">
+                    <button class="navigate-button" data-navigate="next">
+                        <span class="navigate-button__title">Оценить сейчас</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.0002 25.2061L4 18.2057L5.4139 16.7918L11.0002 22.3779L23.7672 9.61112L25.1811 11.025L11.0002 25.2061ZM28 8.20792L26.5859 6.79382L25.1718 8.20792L26.5859 9.62202L28 8.20792Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+                </div>
+            </footer>
+        </section>
+        <section class="card card--2 none" data-progress>
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Производитель</h1>
+                <p class="card__header-title card__header-title--2">Производитель</p>
+                <p class="card__header-title card__header-title--3">Производитель</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Укажите производителя вашего смартфона:
+                </p>
+
+                <div class="custom-select" id="manufacturerSelect" data-value>
+                    <button class="custom-select__button">
+                        <span class="custom-select__button-title">Производитель</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.0021 11.7521L23 18.7501L21.5 20.2501L16.001 14.7511L10.5 20.2501L9 18.7501L16.0021 11.7521Z"
+                                  fill="black"/>
+                        </svg>
+                    </button>
+                    <ul class="custom-select__list" id="manufacturerOption">
+                        <li class="custom-select__item">Xiaomi</li>
+                        <li class="custom-select__item">Xiaomi</li>
+                        <li class="custom-select__item">Xiaomi</li>
+                        <li class="custom-select__item">Xiaomi</li>
+                        <li class="custom-select__item">Xiaomi</li>
+                        <li class="custom-select__item">Xiaomi</li>
+                    </ul>
+                </div>
+            </div>
+            <footer class="card__footer">
+                <div class="card__footer-inner">
+                    <div class="card__footer-buttons">
+                        <button class="navigate-button" data-navigate="prev">
+                            <span class="navigate-button__title">Назад</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.75 9L20.25 10.5L14.7511 15.999L20.25 21.5L18.75 23L11.75 16L11.751 15.999L18.75 9Z"
+                                      fill="white"/>
+                            </svg>
+                        </button>
+                        <button class="navigate-button" data-navigate="next">
+                            <span class="navigate-button__title">Продолжить</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.25 23L11.75 21.5L17.249 16.001L11.75 10.5L13.25 9L20.25 16.0021L13.25 23Z"
+                                      fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="progress">
+                        <div class="progress__label">
+                            <span class="progress__value">0%</span>
+                        </div>
+                        <div class="progress__wrapper">
+                            <div class="progress__line" style="width: 1%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+        <section class="card card--3 none" data-progress>
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Модель</h1>
+                <p class="card__header-title card__header-title--2">Модель</p>
+                <p class="card__header-title card__header-title--3">Модель</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Укажите модель вашего смартфона:
+                </p>
+
+                <div class="custom-select" id="modelsSelect" data-value>
+                    <button class="custom-select__button">
+                        <span class="custom-select__button-title">Модель</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.0021 11.7521L23 18.7501L21.5 20.2501L16.001 14.7511L10.5 20.2501L9 18.7501L16.0021 11.7521Z"
+                                  fill="black"/>
+                        </svg>
+                    </button>
+                    <ul class="custom-select__list" id="modelsOption">
+                    </ul>
+                </div>
+            </div>
+            <footer class="card__footer">
+                <div class="card__footer-buttons">
+                    <button class="navigate-button" data-navigate="prev">
+                        <span class="navigate-button__title">Назад</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 9L20.25 10.5L14.7511 15.999L20.25 21.5L18.75 23L11.75 16L11.751 15.999L18.75 9Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+                    <button class="navigate-button" data-navigate="next">
+                        <span class="navigate-button__title">Продолжить</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.25 23L11.75 21.5L17.249 16.001L11.75 10.5L13.25 9L20.25 16.0021L13.25 23Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+                    <div class="progress">
+                        <div class="progress__label">
+                            <span class="progress__value">0%</span>
+                        </div>
+                        <div class="progress__wrapper">
+                            <div class="progress__line" style="width: 1%;"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </footer>
+        </section>
+        <section class="card card--4 none" data-progress>
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Конфигурация устройства</h1>
+                <p class="card__header-title card__header-title--2">Конфигурация устройства</p>
+                <p class="card__header-title card__header-title--3">Конфигурация устройства</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Укажите конфигурацию вашего смартфона:
+                </p>
+
+                <div class="custom-select" id="configurationsSelect" data-value>
+                    <button class="custom-select__button">
+                        <span class="custom-select__button-title">Конфигурация</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.0021 11.7521L23 18.7501L21.5 20.2501L16.001 14.7511L10.5 20.2501L9 18.7501L16.0021 11.7521Z"
+                                  fill="black"/>
+                        </svg>
+                    </button>
+                    <ul class="custom-select__list" id="configurationsOption">
+                    </ul>
+                </div>
+            </div>
+            <footer class="card__footer">
+                <div class="card__footer-buttons">
+                    <button class="navigate-button" data-navigate="prev">
+                        <span class="navigate-button__title">Назад</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 9L20.25 10.5L14.7511 15.999L20.25 21.5L18.75 23L11.75 16L11.751 15.999L18.75 9Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+                    <button class="navigate-button" data-navigate="next">
+                        <span class="navigate-button__title">Продолжить</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.25 23L11.75 21.5L17.249 16.001L11.75 10.5L13.25 9L20.25 16.0021L13.25 23Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+                    <div class="progress">
+                        <div class="progress__label">
+                            <span class="progress__value">0%</span>
+                        </div>
+                        <div class="progress__wrapper">
+                            <div class="progress__line" style="width: 1%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+        <section class="card card--5 none" data-progress>
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Состояние</h1>
+                <p class="card__header-title card__header-title--2">Состояние</p>
+                <p class="card__header-title card__header-title--3">Состояние</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Давайте посмотрим на состояние вашего устройства
+                </p>
+
+                <div class="custom-select" id="conditionSelect" data-value>
+                    <button class="custom-select__button">
+                        <span class="custom-select__button-title">Состояние</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.0021 11.7521L23 18.7501L21.5 20.2501L16.001 14.7511L10.5 20.2501L9 18.7501L16.0021 11.7521Z"
+                                  fill="black"/>
+                        </svg>
+                    </button>
+                    <ul class="custom-select__list" id="conditionOption">
+                    </ul>
+                </div>
+            </div>
+            <footer class="card__footer">
+                <div class="card__footer-buttons">
+                    <button class="navigate-button" data-navigate="prev">
+                        <span class="navigate-button__title">Назад</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 9L20.25 10.5L14.7511 15.999L20.25 21.5L18.75 23L11.75 16L11.751 15.999L18.75 9Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+                    <button class="navigate-button" data-navigate="next">
+                        <span class="navigate-button__title">Продолжить</span>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.25 23L11.75 21.5L17.249 16.001L11.75 10.5L13.25 9L20.25 16.0021L13.25 23Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+                    <div class="progress">
+                        <div class="progress__label">
+                            <span class="progress__value">0%</span>
+                        </div>
+                        <div class="progress__wrapper">
+                            <div class="progress__line" style="width: 1%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="card card--6 none" data-progress>
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Стоимость устройства</h1>
+                <p class="card__header-title card__header-title--2">Стоимость устройства</p>
+                <p class="card__header-title card__header-title--3">Стоимость устройства</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Мы все посчитали! За ваше устройство <strong class="card__subtitle-model">Xiaomi Redmi Note 8T</strong> с конфигурацией <strong class="card__subtitle-configuration">8 / 256 ГБ</strong> мы готовы предложить
+                    <strong class="card__subtitle-price">418 <sup>00</sup> BYN</strong> или выкупить его за <strong class="card__subtitle-price">312 <sup>00</sup> BYN</strong>
+                <footer class="card__footer">
+                    <div class="card__footer-buttons">
+                        <button class="navigate-button" data-navigate="prev">
+                            <span class="navigate-button__title">Назад</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.75 9L20.25 10.5L14.7511 15.999L20.25 21.5L18.75 23L11.75 16L11.751 15.999L18.75 9Z"
+                                      fill="white"/>
+                            </svg>
+                        </button>
+                        <button class="navigate-button" data-navigate="next">
+                            <span class="navigate-button__title">Продолжить</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.25 23L11.75 21.5L17.249 16.001L11.75 10.5L13.25 9L20.25 16.0021L13.25 23Z"
+                                      fill="white"/>
+                            </svg>
+                        </button>
+                        <div class="progress">
+                            <div class="progress__label">
+                                <span class="progress__value">0%</span>
+                            </div>
+                            <div class="progress__wrapper">
+                                <div class="progress__line" style="width: 1%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+        </section>
+        <section class="card card--7 none" data-progress>
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Оформление заявки</h1>
+                <p class="card__header-title card__header-title--2">Оформление заявки</p>
+                <p class="card__header-title card__header-title--3">Оформление заявки</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Пожалуйста, предоставьте все необходимые контактные данные, чтобы мы могли оперативно связаться с вами для оформления выкупа вашего устройства или его обмена на новое со скидкой
+                </p>
+                <div class="record">
+                    <input class="none" type="text" id="date" name="date">
+                    <div class="custom-input">
+                        <input class="custom-input__text-field" id="name" type="text" name="name"
+                               placeholder="Имя" required>
+                    </div>
+                    <div class="custom-input">
+                        <input class="custom-input__text-field" id="number" type="text" name="number"
+                               placeholder="Номер телефона" required>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <p class="subtitle">
+                        Выберите удобный для вас способ связи
+                    </p>
+                    <div class="contact-method__options">
+                            <input class="custom-radio radio-hidden" id="telegram-contact" name="contact-method" type="radio" value="Telegram">
+                        <label class="custom-radio__label" for="telegram-contact">
+                            <svg width="28" height="28" viewBox="0 0 122 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.91253 46.3961C4.18932 46.2577 4.46623 46.1261 4.7361 46.0015C9.42767 43.8281 14.1815 41.7931 18.9285 39.7581C19.1845 39.7581 19.6134 39.4605 19.8556 39.3636C20.2223 39.2044 20.5891 39.0521 20.9559 38.8929C21.6617 38.5884 22.3676 38.2907 23.0664 37.9862C24.4781 37.384 25.8827 36.7818 27.2943 36.1796L35.7433 32.5595C41.3759 30.1507 47.0156 27.735 52.6483 25.3262C58.2809 22.9175 63.9204 20.5018 69.5531 18.093C75.1858 15.6842 80.8253 13.2686 86.4579 10.8598C92.0906 8.45101 97.7303 6.03531 103.363 3.62653C104.615 3.08664 105.972 2.28369 107.314 2.04835C108.442 1.84762 109.542 1.46002 110.677 1.24545C112.829 0.837062 115.202 0.670955 117.265 1.56386C117.977 1.87534 118.635 2.31141 119.181 2.85823C121.797 5.44697 121.43 9.6969 120.877 13.3377C117.022 38.7129 113.168 64.0951 109.307 89.4702C108.781 92.9519 108.061 96.7727 105.314 98.9738C102.989 100.836 99.6815 101.043 96.8098 100.254C93.9381 99.4583 91.4056 97.7902 88.9214 96.1497C78.6179 89.3249 68.3076 82.5 58.0041 75.6751C55.5545 74.0554 52.8282 71.9374 52.8559 68.9957C52.8697 67.2237 53.9284 65.6455 55.0078 64.2404C63.962 52.5565 76.8811 44.5272 86.4926 33.3832C87.8488 31.8119 88.9145 28.974 87.0531 28.0673C85.946 27.5274 84.6726 28.2611 83.6623 28.9602C70.9577 37.7854 58.2602 46.6176 45.5555 55.4428C41.4106 58.3223 37.0651 61.2848 32.069 61.9908C27.5989 62.6276 23.1011 61.3817 18.7762 60.1081C15.1503 59.0421 11.5312 57.9485 7.926 56.8203C6.00924 56.225 4.03018 55.5813 2.54936 54.2315C1.06854 52.8818 0.217529 50.6114 1.11017 48.8118C1.67067 47.6835 2.75709 46.9706 3.89884 46.3892L3.91253 46.3961Z" fill="black"/>
+                            </svg>
+<!--                            <span class="custom-radio__text">Telegram</span>-->
+                        </label>
+                            <input class="custom-radio radio-hidden" id="whatsapp-contact" name="contact-method" type="radio" value="WhatsApp">
+                        <label class="custom-radio__label" for="whatsapp-contact">
+                            <svg width="28" height="28" viewBox="0 0 129 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M83.8297 91.6583C58.5519 91.6583 37.9865 71.08 37.9796 45.7948C37.9865 39.3852 43.204 34.1731 49.5978 34.1731C50.2552 34.1731 50.9056 34.2285 51.5284 34.3392C52.8985 34.5677 54.1994 35.0314 55.3965 35.7305C55.5695 35.8343 55.6871 36.0005 55.7148 36.1943L58.3858 53.0349C58.4204 53.2287 58.3582 53.4295 58.2267 53.5748C56.7528 55.2084 54.8706 56.3851 52.7739 56.9734L51.7637 57.2572L52.1442 58.2332C55.5902 67.01 62.6069 74.0217 71.388 77.4826L72.3637 77.8702L72.6474 76.8597C73.2355 74.7624 74.4119 72.8796 76.045 71.4053C76.1626 71.2946 76.3218 71.2392 76.4809 71.2392C76.5155 71.2392 76.5501 71.2392 76.5917 71.2461L93.4273 73.9179C93.628 73.9525 93.7941 74.0632 93.8979 74.2363C94.5899 75.4338 95.0535 76.742 95.2888 78.1125C95.3995 78.7216 95.4479 79.3653 95.4479 80.0367C95.4479 86.4394 90.2373 91.6514 83.8297 91.6583Z" fill="black"/>
+                                <path d="M128.656 57.2157C127.292 41.8079 120.234 27.5144 108.782 16.9726C97.2609 6.36843 82.3142 0.526459 66.6826 0.526459C32.3746 0.526459 4.46048 28.4488 4.46048 62.7669C4.46048 74.2847 7.63657 85.5049 13.6498 95.2785L0.23938 124.973L43.1763 120.398C50.6427 123.457 58.545 125.007 66.6757 125.007C68.8139 125.007 71.0074 124.897 73.2079 124.668C75.1454 124.461 77.1037 124.156 79.0274 123.768C107.758 117.961 128.732 92.4544 128.898 63.0992V62.7669C128.898 60.898 128.815 59.0292 128.649 57.2226L128.656 57.2157ZM44.8301 107.364L21.0747 109.897L28.1675 94.1779L26.7489 92.2744C26.6451 92.136 26.5413 91.9975 26.4237 91.8383C20.2651 83.3315 17.0128 73.2811 17.0128 62.7738C17.0128 35.3775 39.2943 13.0895 66.6826 13.0895C92.3409 13.0895 114.09 33.1141 116.186 58.6762C116.297 60.0467 116.359 61.4241 116.359 62.7808C116.359 63.1684 116.352 63.5491 116.345 63.9575C115.82 86.8754 99.8142 106.339 77.422 111.295C75.7128 111.676 73.9621 111.967 72.2184 112.154C70.4054 112.361 68.544 112.465 66.6964 112.465C60.1158 112.465 53.722 111.192 47.681 108.672C47.0098 108.402 46.3524 108.111 45.7366 107.814L44.8371 107.378L44.8301 107.364Z" fill="black"/>
+                            </svg>
+<!--                            <span class="custom-radio__text">WhatsApp</span>-->
+                        </label>
+                            <input class="custom-radio radio-hidden" id="number-contact" name="contact-method" type="radio" value="Номер телефона" checked>
+                        <label class="custom-radio__label" for="number-contact">
+                            <svg width="28" height="28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M79.7832 100C35.7977 100 0.0120409 64.2023 0 20.2168C0.0120409 9.06688 9.09095 0 20.2168 0C21.3607 0 22.4924 0.0963158 23.5761 0.288971C25.9602 0.686322 28.224 1.49308 30.3071 2.70921C30.6081 2.88983 30.8128 3.17886 30.8609 3.51601L35.5087 32.8116C35.5689 33.1487 35.4606 33.4979 35.2318 33.7508C32.6671 36.5925 29.3919 38.6394 25.7435 39.6629L23.9856 40.1566L24.6478 41.8543C30.6441 57.1222 42.8537 69.3197 58.1337 75.3402L59.8315 76.0145L60.325 74.2565C61.3485 70.6081 63.3955 67.333 66.2372 64.7683C66.4419 64.5756 66.7188 64.4792 66.9958 64.4792C67.056 64.4792 67.1162 64.4792 67.1885 64.4913L96.484 69.1391C96.8332 69.1993 97.1222 69.3919 97.3028 69.693C98.5069 71.7761 99.3137 74.0518 99.7231 76.4359C99.9157 77.4955 100 78.6153 100 79.7833C100 90.9212 90.9331 99.988 79.7832 100Z" fill="black"/>
+                            </svg>
+<!--                            <span class="custom-radio__text">Номер телефона</span>-->
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="trade-in-method">
+                    <p class="subtitle">
+                        Укажите тип сдачи устройства в Трейд-Ин
+                    </p>
+
+                    <div class="trade-in-method__options">
+                        <input class="custom-radio radio-hidden" id="trade-buyout" name="trade-in-method" type="radio" value="Выкуп">
+                        <label class="custom-radio__label" for="trade-buyout">
+                            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30 10.9976V23.0031C30 24.1066 29.1023 25.0042 27.9991 25.0042H22.0029V23.0039L27.9991 23.0032V10.9976H18.9858V13.9989H16.9849V10.9976C16.9849 9.89428 17.8826 8.99669 18.9858 8.99669H27.9991C29.1024 8.99669 30 9.89438 30 10.9976ZM9.9919 16H4.0009V5.99528L18.65 5.99278C18.6897 6.00978 18.7846 6.13038 18.7846 6.32908V6.99568H20.7855V6.32908C20.7855 5.04178 19.8341 3.99438 18.6648 3.99438H3.9943C2.7642 3.99438 2 4.76118 2 5.99528V18.001H9.9919V16.0001V16ZM19.9953 26.0046V18.001C19.9953 16.8977 19.0976 16.0001 17.9944 16.0001H13.9925C12.8892 16.0001 11.9916 16.8978 11.9916 18.001V26.0046C11.9916 27.1081 12.8893 28.0057 13.9925 28.0057H17.9944C19.0977 28.0057 19.9953 27.108 19.9953 26.0046ZM17.9944 18.001L17.9956 26.0048L13.9925 26.0046V18.001H17.9944Z" fill="black"/>
+                            </svg>
+                            <span class="custom-radio__text">Выкуп</span>
+                        </label>
+
+                        <input class="custom-radio radio-hidden" id="trade-credit" name="trade-in-method" type="radio" value="В счет нового" checked>
+                        <label class="custom-radio__label" for="trade-credit">
+                            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30 23.0031V10.9976C30 9.89438 29.1024 8.99669 27.9991 8.99669H18.9858C17.8826 8.99669 16.9849 9.89428 16.9849 10.9976V13.9989H18.9858V10.9976H27.9991V23.0032L22.0029 23.0039V25.0042H27.9991C29.1023 25.0042 30 24.1066 30 23.0031Z" fill="black"/>
+                                <path d="M4.0009 18H9.9919V20.001H2V5.99528C2 4.76118 2.7642 3.99438 3.9943 3.99438H18.6648C19.8341 3.99438 20.7855 5.04178 20.7855 6.32908V6.99568H18.7846V6.32908C18.7846 6.13038 18.6897 6.00978 18.65 5.99278L4.0009 5.99528V18Z" fill="black"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9953 18.001V26.0046C19.9953 27.108 19.0977 28.0057 17.9944 28.0057H13.9925C12.8893 28.0057 11.9916 27.1081 11.9916 26.0046V18.001C11.9916 16.8978 12.8892 16.0001 13.9925 16.0001H17.9944C19.0976 16.0001 19.9953 16.8977 19.9953 18.001ZM17.9956 26.0048L17.9944 18.001H13.9925V26.0046L17.9956 26.0048Z" fill="black"/>
+                                <path d="M9 8H11V11H14V13H11V16H9V13H6V11L9 11V8Z" fill="black"/>
+                            </svg>
+                            <span class="custom-radio__text">В счет нового</span>
+                        </label>
+                    </div>
+                </div>
+
+                <footer class="card__footer">
+                    <div class="card__footer-buttons">
+                        <button class="navigate-button" data-navigate="prev">
+                            <span class="navigate-button__title">Назад</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.75 9L20.25 10.5L14.7511 15.999L20.25 21.5L18.75 23L11.75 16L11.751 15.999L18.75 9Z"
+                                      fill="white"/>
+                            </svg>
+                        </button>
+                        <button class="navigate-button" type="submit">
+                            <span class="navigate-button__title">Продолжить</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13.25 23L11.75 21.5L17.249 16.001L11.75 10.5L13.25 9L20.25 16.0021L13.25 23Z"
+                                      fill="white"/>
+                            </svg>
+                        </button>
+                        <div class="progress">
+                            <div class="progress__label">
+                                <span class="progress__value">0%</span>
+                            </div>
+                            <div class="progress__wrapper">
+                                <div class="progress__line" style="width: 1%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+        </section>
+        <section class="card card--8 none" data-progress>
+            <header class="card__header">
+                <h1 class="card__header-title card__header-title--1">Заявка успешно отправлена</h1>
+                <p class="card__header-title card__header-title--2">Заявка успешно отправлена</p>
+                <p class="card__header-title card__header-title--3">Заявка успешно отправлена</p>
+            </header>
+            <div class="card__content">
+                <p class="card__subtitle">
+                    Спасибо! Мы получили вашу заявку и вскоре свяжемся с вами для дальнейших шагов. Ожидайте нашего ответа!
+                </p>
+                <footer class="card__footer">
+                    <div class="card__footer-buttons">
+                        <button class="navigate-button" data-navigate="prev">
+                            <span class="navigate-button__title">Назад</span>
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.75 9L20.25 10.5L14.7511 15.999L20.25 21.5L18.75 23L11.75 16L11.751 15.999L18.75 9Z"
+                                      fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                </footer>
+        </section>
+    </form>
+
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

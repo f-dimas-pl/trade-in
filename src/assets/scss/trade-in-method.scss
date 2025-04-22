@@ -1,0 +1,23 @@
+.trade-in-method {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__options {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+[id^="trade-"]:checked + .custom-radio__label {
+  background: var(--accent);
+}
+
+[id^="trade-"]:checked + .custom-radio__label > .custom-radio__text {
+  color: var(--white);
+}
+
+[id^="trade-"]:checked + .custom-radio__label > svg path {
+  fill: var(--white);
+}

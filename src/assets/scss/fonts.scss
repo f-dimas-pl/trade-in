@@ -1,0 +1,88 @@
+// TODO: убрать завязку шрифты A1 Serif с другого ресурса, мы сделали локальную
+
+//@import url(https://db.onlinewebfonts.com/c/a46184f8d7484ccf6bfdf17ab89e2e67?family=A1+Serif);
+//
+//@font-face {
+//  font-family: "A1 Serif";
+//  src: url("https://db.onlinewebfonts.com/t/a46184f8d7484ccf6bfdf17ab89e2e67.eot");
+//  src: url("https://db.onlinewebfonts.com/t/a46184f8d7484ccf6bfdf17ab89e2e67.eot?#iefix")format("embedded-opentype"),
+//  url("https://db.onlinewebfonts.com/t/a46184f8d7484ccf6bfdf17ab89e2e67.woff2")format("woff2"),
+//  url("https://db.onlinewebfonts.com/t/a46184f8d7484ccf6bfdf17ab89e2e67.woff")format("woff"),
+//  url("https://db.onlinewebfonts.com/t/a46184f8d7484ccf6bfdf17ab89e2e67.ttf")format("truetype"),
+//  url("https://db.onlinewebfonts.com/t/a46184f8d7484ccf6bfdf17ab89e2e67.svg#A1 Serif")format("svg");
+//}
+
+// A1 Serif
+@font-face {
+  font-family: "A1 Serif";
+  src: url('../fonts/a1-serif/A1-Serif-Regular.woff') format('woff'),
+  url('../fonts/a1-serif/A1-Serif-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A1 Serif";
+  src: url('../fonts/a1-serif/A1-Serif-Bold.woff') format('woff'),
+  url('../fonts/a1-serif/A1-Serif-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+// Gilroy
+@font-face {
+  font-family: "Gilroy";
+  src: url('../fonts/gilroy/Gilroy-Regular.woff') format('woff'),
+  url('../fonts/gilroy/Gilroy-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url('../fonts/gilroy/Gilroy-Medium.woff') format('woff'),
+  url('../fonts/gilroy/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url('../fonts/gilroy/Gilroy-SemiBold.woff') format('woff'),
+  url('../fonts/gilroy/Gilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url('../fonts/gilroy/Gilroy-Bold.woff') format('woff'),
+  url('../fonts/gilroy/Gilroy-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url('../fonts/gilroy/Gilroy-ExtraBold.woff') format('woff'),
+  url('../fonts/gilroy/Gilroy-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url('../fonts/gilroy/Gilroy-Black.woff') format('woff'),
+  url('../fonts/gilroy/Gilroy-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

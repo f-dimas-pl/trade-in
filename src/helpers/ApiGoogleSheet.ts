@@ -1,0 +1,1 @@
+export const API_GOOGLE_SHEET: string = "https://script.google.com/macros/s/AKfycbws9OiHal-X_m5jO1hKak-3s-mF7cAhZvrpIkp07yWNHAxi7mNqB_baJf9KJukKDCbl/exec";

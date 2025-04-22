@@ -1,0 +1,58 @@
+.navigate-button, .button {
+  border-radius: 4px;
+  padding: 14px 24px;
+  min-width: 160px;
+  height: 48px;
+  background: var(--accent);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  transition: var(--transition);
+
+  -webkit-box-shadow: 0px 5px 30px 13px rgba(24, 27, 30, 0.03);
+  -moz-box-shadow: 0px 5px 30px 13px rgba(24, 27, 30, 0.03);
+  box-shadow: 0px 5px 30px 13px rgba(24, 27, 30, 0.03);
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  svg path {
+    transition: var(--transition);
+  }
+
+  &:hover {
+    background: var(--white);
+    color: var(--black);
+    svg path {
+      fill: var(--black);
+    }
+  }
+
+  &:disabled {
+    background: var(--disabled);
+    color: var(--disabled-text);
+
+    svg path {
+      fill: var(--disabled-text);
+    }
+  }
+}
+
+.button-full {
+  width: 100%;
+}
+
+.navigate-button__title, .button__title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 164%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.navigate-button svg {
+  pointer-events: none;
+}

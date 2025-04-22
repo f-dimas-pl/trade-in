@@ -1,0 +1,24 @@
+.contact-method {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  &__options {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+[id$="-contact"]:checked + .custom-radio__label {
+  background: var(--accent);
+}
+
+[id$="-contact"]:checked + .custom-radio__label > .custom-radio__text {
+  color: var(--white);
+}
+
+[id$="-contact"]:checked + .custom-radio__label > svg path {
+  fill: var(--white);
+}

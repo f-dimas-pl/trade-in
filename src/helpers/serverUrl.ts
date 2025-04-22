@@ -1,0 +1,2 @@
+export const URL_CONDITIONS: string = "https://678933222c874e66b7d7f3c5.mockapi.io/trade_in_conditions";
+export const URL_SUPPORTED_DEVICES: string = "https://678933222c874e66b7d7f3c5.mockapi.io/supported_devices";

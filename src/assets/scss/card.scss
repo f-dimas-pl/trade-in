@@ -1,0 +1,122 @@
+.card {
+  color: var(--black);
+  background: var(--white);
+  border-radius: 4px;
+  width: 100%;
+  // height: 585px;
+  height: 700px;
+  padding: 30px 50px 50px;
+  position: relative;
+  opacity: 0;
+  visibility: hidden;
+  left: -30px;
+  transition:
+          opacity 500ms cubic-bezier(0.335, 0.01, 0.03, 1.36),
+          visibility 500ms cubic-bezier(0.335, 0.01, 0.03, 1.36),
+          left 500ms cubic-bezier(0.335, 0.01, 0.03, 1.36);
+
+  -webkit-box-shadow: 10px 9px 36px 0px rgba(39, 45, 49, 0.2);
+  -moz-box-shadow: 10px 9px 36px 0px rgba(39, 45, 49, 0.2);
+  box-shadow: 10px 9px 36px 0px rgba(39, 45, 49, 0.2);
+}
+
+.card.visible {
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+}
+
+.card--1 {
+  &::after {
+    content: "";
+    position: absolute;
+    background: url('../img/phone-decor.png');
+    width: 720px;
+    height: 720px;
+    scale: 0.6;
+    bottom: -144px;
+    right: -150px;
+  }
+}
+
+.card__header {
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+  position: relative;
+  margin-bottom: 85px;
+}
+
+.card__header-title {
+  font-family: var(--accent-font);
+  font-weight: 700;
+  font-size: 44px;
+}
+
+.card__header-title--1 {
+  color: rgba(0, 0, 0, 0.05);
+}
+
+.card__header-title--2 {
+  color: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 28px;
+}
+
+.card__header-title--3 {
+  color: var(--black);
+  position: absolute;
+  top: 55px;
+}
+
+.card__subtitle, .subtitle {
+  color: var(--black);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 165%;
+  max-width: 800px;
+  margin-bottom: 22px;
+}
+
+.subtitle {
+  margin-bottom: unset !important;
+}
+
+.w-full {
+  max-width: unset !important;
+}
+
+.card__label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--white);
+}
+
+.record {
+  margin-bottom: 20px;
+}
+
+.card__select {
+  color: var(--black);
+}
+
+.card__footer {
+  position: absolute;
+  bottom: 50px;
+  gap: 10px;
+  width: 1070px;
+}
+
+.card__footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.card__footer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

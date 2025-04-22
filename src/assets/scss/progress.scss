@@ -1,0 +1,25 @@
+.progress {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+
+  &__label {
+    text-wrap: nowrap;
+  }
+
+  &__wrapper {
+    background: var(--gray-light);
+    border-radius: 2px;
+    height: 6px;
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  &__line {
+    background: var(--blue);
+    border-radius: 2px;
+    height: 100%;
+    transition: var(--transition);
+  }
+}

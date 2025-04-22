@@ -1,0 +1,46 @@
+:root {
+    --accent-gradient: linear-gradient(180deg, #eb140a 0%, #ff372d 100%), linear-gradient(180deg, #eb140a 0%, #820000 100%);
+    --white: #fff;
+    --black: #000;
+    --accent-font: "A1 Serif";
+    --secondary-font: "Gilroy";
+    //--accent: #FF372D;
+    --accent: #EB140A;
+    --accent-hovered: #D31209;
+    --accent-pressed: #C81108;
+    --custom-select-list: #F2F2F2;
+    --transition: all .4s ease-in-out;
+    --border-input: #4F4F4F;
+    --selected: #3F1EE2;
+    --error: #EB140A;
+    --disabled: #F2F2F2;
+    --disabled-text: #BCBCBC;
+    --gray-light: #F2F2F2;
+    --blue: #3F1EE2;
+}
+
+
+body {
+    font-family: var(--secondary-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100svh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center left;
+    color: var(--black);
+    background-image: url('../img/bg-real-2.jpg');
+    //background: #FDC9C4;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.record {
+    //width: 500px;
+}
